@@ -1,7 +1,7 @@
 export class Personagem {
     nome;
-    vida;
-    mana;
+    vida = 100;
+    mana = 100;
     level;
     tipo;
 
