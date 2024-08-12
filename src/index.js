@@ -2,11 +2,9 @@ import { Personagem } from "./modules/Personagem.js";
 import { PersonagemView } from "./components/personagem-view.js";
 import { Mago } from "./modules/Mago.js";
 
-const personagemPedrinho = new Personagem('Pedrinho', 5, 'Mago');
-const personagemJose = new Personagem('José', 3, 'Arqueiro');
+const magoLucas = new Mago('Lucas', 4, 'Água', 4, 3);
+const magaMeulia = new Mago('Méulia', 8, 'Terra', 7, 10);
 
-const personagens = [personagemPedrinho, personagemJose];
+const personagens = [magoLucas, magaMeulia];
 
 new PersonagemView(personagens).render();
-
-console.log(new Mago('gelo', 7, 9));
