@@ -1,9 +1,15 @@
+import { Personagem } from '../modules/Personagem.js';
+import { mostrarModal } from './modal.js';
+
 export class PersonagemView {
     personagens;
+    personagensSelecionados;
 
     constructor(personagens) {
         this.ulPersonagens = document.querySelector('ul#personagens');
         this.personagens = personagens;
+        this.personagensSelecionados = [];
+        this.escutarEventoDuelo();
     }
 
     render() {
@@ -18,9 +24,9 @@ criaPersonagem = (personagem) => {
     const personagemLI = document.createElement('li')
     personagemLI.classList.add('personagem', personagem.constructor.tipo)
 
-    //const estaSelecionado = this.personagensSelecionados.indexOf(personagem) !== -1 //sintaxe para quando encontra no array
+    const estaSelecionado = this.personagensSelecionados.indexOf(personagem) !== -1 //sintaxe para quando encontra no array
 
-    //if (estaSelecionado) personagemLI.classList.add('selecionado')
+    if (estaSelecionado) personagemLI.classList.add('selecionado')
 
     personagemLI.innerHTML =
 
@@ -68,7 +74,7 @@ criaPersonagem = (personagem) => {
     }*/
 
 
-    /*personagemLI.onclick = () => {
+    personagemLI.onclick = () => {
         const jaTem2Selecionados = this.personagensSelecionados.length === 2
         if (!jaTem2Selecionados || estaSelecionado) {
             personagemLI.classList.toggle('selecionado')
@@ -77,38 +83,37 @@ criaPersonagem = (personagem) => {
 
             this.removeSelecao(personagem)
         }
-    }*/
+    }
 
     return personagemLI
 }
 
-}
-
-
-/*adicionaSelecao = (personagem) => {}
-    this.personagensSelecionados.push(personagem)
-    this.render()
-}
-
-
-removeSelecao = (personagem) => {
-    const indexDoPersonagemNoArray = this.personagensSelecionados.indexOf(personagem)
-    this.personagensSelecionados.splice(indexDoPersonagemNoArray, 1)
-    this.render()
-}
-
-escutarEventoDuelo() {
-    const botaoDuelar = document.querySelector('.botao-duelar')
-
-    botaoDuelar.addEventListener('click', () => {
-        if (this.personagensSelecionados.length < 2) return mostrarModal('Selecione 2 personagens')
-
-        const resultadoDuelo = Personagem.verificarVencedor(this.personagensSelecionados[0], this.personagensSelecionados[1])
-
-        mostrarModal(resultadoDuelo)
-
-        this.personagensSelecionados.splice(0, this.personagensSelecionados.length)
-
+    adicionaSelecao = (personagem) => {
+        this.personagensSelecionados.push(personagem)
         this.render()
-    })
-}*/
+    }
+
+
+    removeSelecao = (personagem) => {
+        const indexDoPersonagemNoArray = this.personagensSelecionados.indexOf(personagem)
+        this.personagensSelecionados.splice(indexDoPersonagemNoArray, 1)
+        this.render()
+    }
+
+    escutarEventoDuelo() {
+        const botaoDuelar = document.querySelector('.botao-duelar')
+        console.log(botaoDuelar);
+
+        botaoDuelar.addEventListener('click', () => {
+            if (this.personagensSelecionados.length < 2) return mostrarModal('Selecione 2 personagens')
+
+            const resultadoDuelo = Personagem.verificarVencedor(this.personagensSelecionados[0], this.personagensSelecionados[1])
+
+            mostrarModal(resultadoDuelo)
+
+            this.personagensSelecionados.splice(0, this.personagensSelecionados.length)
+
+            this.render()
+        })
+    }
+}
