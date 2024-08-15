@@ -2,15 +2,33 @@ export class Personagem {
     nome;
     vida = 100;
     mana = 100;
-    level;
+    #level;
 
-    constructor(nome, level) {
+    constructor(nome) {
         this.nome = nome;
-        this.level = level;
+        this.#level = 1;
+    }
+
+    aumentarLevel() {
+        this.level += 1;
+    }
+
+    diminuirLevel() {
+        this.level -= 1;
+    }
+
+    set level(novoLevel) {
+        if(novoLevel >= 1 && novoLevel <= 10) {
+            this.#level = novoLevel;
+        }
+    }
+
+    get level() {
+        return this.#level;
     }
 
     obterInsignia() {
-        if (this.level >= 5) {
+        if (this.#level >= 5) {
             return `Implacável ${this.constructor.tipo}`;
         } else {
             return `${this.constructor.tipo} iniciante`;
@@ -28,5 +46,4 @@ export class Personagem {
 
         return `${ personagem2.constructor.tipo } ${personagem2.nome} é o vencedor!`
     }
-
 }

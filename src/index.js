@@ -2,12 +2,13 @@ import { PersonagemView } from "./components/personagem-view.js";
 import { Mago } from "./modules/Mago.js";
 import { Arqueiro } from "./modules/Arqueiro.js";
 import { ArqueiroMago } from "./modules/Arqueiro-mago.js";
+import { Guerreiro } from "./modules/Guerreiro.js";
 
-const magoLucas = new Mago('Lucas', 4, 'Água', 4, 3);
+const guerreiroLuquios = new Guerreiro('Luquios', 10);
 const magaMeulia = new Mago('Méulia', 8, 'Terra', 7, 10);
-const arqueiroMarcelo = new Arqueiro('Marcelo', 6, 10);
-const arqueiroMagoIara = new ArqueiroMago('Iara', 7, 10, 'Ar', 4, 8);
+const arqueiroMarcellus = new Arqueiro('Marcellus', 6, 10);
+const arqueiroMagoIaris = new ArqueiroMago('Iaris', 7, 10, 'Ar', 4, 8);
 
-const personagens = [magoLucas, magaMeulia, arqueiroMarcelo, arqueiroMagoIara];
+const personagens = [guerreiroLuquios, magaMeulia, arqueiroMarcellus, arqueiroMagoIaris];
 
 new PersonagemView(personagens).render();
