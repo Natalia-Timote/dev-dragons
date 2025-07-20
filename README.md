@@ -16,8 +16,6 @@ No **Devs&Dragons**, você pode simular combates entre cartas de diferentes clas
 
 ## 📚 Objetivos do Curso
 
-**👉 JavaScript: classes e heranças no desenvolvimento de aplicações com orientação a objetos**
-
 * Aprender a **criar** classes no JavaScript;
 * Saber como utilizar **extends** e **super** na **herança**;
 * Sobrescrever métodos com **polimorfismo**;
